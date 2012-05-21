@@ -3,8 +3,12 @@ window.Game =
     console.log 'Initialized'
     Game.canvas = document.getElementById 'snake-pit'
 
-    Game.canvas.width = document.width - 10
-    Game.canvas.height = document.height - 10
+    if navigator.userAgent.match('WebKit')
+      Game.canvas.width = document.width - 10
+      Game.canvas.height = document.height - 10
+    else
+      Game.canvas.width = 500
+      Game.canvas.height = 500
 
     Game.ctx = Game.canvas.getContext '2d'
     Game.bounds = [0, 0, Game.canvas.width, Game.canvas.height]
