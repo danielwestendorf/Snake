@@ -4,14 +4,22 @@ window.Game =
     Game.canvas = document.getElementById 'snake-pit'
 
     if navigator.userAgent.match('WebKit')
-      Game.canvas.width = document.width - 10
-      Game.canvas.height = document.height - 10
+      width = Math.round(document.width / 10) * 10 - 10
+      height = Math.round(document.height / 10) * 10 - 10
+
+      width -= 10 while width > document.width
+      height -= 10 while height > document.height
+      console.log width
+      console.log document.width
+
+      Game.canvas.width = width
+      Game.canvas.height = height
     else
       Game.canvas.width = 500
       Game.canvas.height = 500
 
     Game.ctx = Game.canvas.getContext '2d'
-    Game.bounds = [0, 0, Game.canvas.width + 8, Game.canvas.height + 8]
+    Game.bounds = [0, 0, Game.canvas.width, Game.canvas.height]
     Game.speed = 100
     Game.score = 0
 
