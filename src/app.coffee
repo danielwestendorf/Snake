@@ -69,12 +69,22 @@ window.Game =
         if Game.snake.move() && Game.snake.avoidingSelf()
           @drawFrame()
         else
-          clearTimeout Game.interval
-          alert('Game Over! Score: ' + Game.score)
+          @gameOver()
       Game.speed)
     else
       clearTimeout Game.interval
       Game.paused = true
+
+
+  gameOver: ->
+    clearTimeout Game.interval
+    if confirm 'Game Over! \nScore: ' + Game.score + "\n\nWant to play again?" 
+      Game.score = 0
+      Game.snake = new Snake
+      Game.mouse = new Mouse
+      Game.paused = true
+
+      Game.pause()
 
   drawFrame: ->
     Game.ctx.clearRect 0, 0, Game.canvas.width, Game.canvas.height
