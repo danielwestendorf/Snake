@@ -11,7 +11,7 @@ window.Game =
       Game.canvas.height = 500
 
     Game.ctx = Game.canvas.getContext '2d'
-    Game.bounds = [0, 0, Game.canvas.width, Game.canvas.height]
+    Game.bounds = [0, 0, Game.canvas.width + 8, Game.canvas.height + 8]
     Game.speed = 100
     Game.score = 0
 
